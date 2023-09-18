@@ -1,0 +1,209 @@
+/* Reset default styles */
+body, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styles */
+body {
+  font-family: 'Geneva', sans-serif;
+  font-size: 16px;
+  color: black;
+  background-color: white;
+  line-height: 1.5;
+  padding: 20px;
+}
+
+/* Header styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  position: relative; /* Needed for absolute positioning */
+}
+
+/* Dark mode switcher */
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px 0 0; /* Added padding to the top and right */
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.switch-label {
+  margin-right: 10px;
+}
+
+.switch-input {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch-input input[type="checkbox"] {
+  display: none;
+}
+
+.switch-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.switch-slider:before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: white;
+  top: 4px;
+  left: 4px;
+  transition: left 0.4s;
+}
+
+/* Font size buttons */
+.font-size-buttons {
+  display: flex;
+  align-items: center;
+  padding: 10px 0 0 10px; /* Added padding to the top and left */
+}
+
+.font-size-button {
+  margin-right: 10px;
+  padding: 14px 8px;
+  border: none;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .switch-label {
+    display: none;
+  }
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  color: white;
+  background-color: #333;
+}
+
+body.dark-mode .switch-slider {
+  background-color: #444;
+}
+
+body.dark-mode .switch-slider:before {
+  left: 30px;
+}
+
+.start-section {
+  margin-left: 5px;
+  margin-top: 20px;
+  font-size: 120%;
+}
+
+.exam-content {
+  margin-left: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.result-container {
+  margin-left: 5px;
+  margin-top: 20px;   
+}
+
+#questionText {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#questionsSetDropdown {
+  margin-right: 20px;
+  font-size: 105%;
+}
+
+#questionsInput {
+  margin-right: 20px;
+  font-size: 105%;
+  width: 5ch;
+}
+
+.spacer {
+  height: 20px; /* Adjust the height as needed */
+}
+
+#startBtn {
+  font-size: 105%;
+}
+
+#newExamBtn {
+  font-size: 120%;
+}
+
+#homeBtn {
+  font-size: 120%;
+}
+
+#prevBtn {
+  font-size: 120%;
+}
+
+#nextBtn {
+  font-size: 120%;
+}
+
+/* Larger text styles */
+body.larger-text {
+  font-size: 18px;
+}
+
+/* Increased paragraph spacing */
+p {
+  margin-bottom: 20px;
+}
+
+/* Exam container styles */
+.exam-container {
+  padding: 20px;
+}
+
+/* Question styles */
+.question {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Choice styles */
+.choices {
+  font-size: 20px;
+}
+
+/* Buttons styles */
+.button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #555;
+}

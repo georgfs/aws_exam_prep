@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <title>Exam Prep (Quiz)</title>
+</head>
+<body>
+  <header>
+    <h1 id="pageTitle">Exam Prep (Quiz)</h1>
+    <div class="font-size-buttons">
+      <button class="font-size-button" id="increaseFontSize">+</button>
+      <button class="font-size-button" id="decreaseFontSize">-</button>
+    </div>
+    <div class="theme-switcher">
+      <label class="switch-label">Dark Mode:</label>
+      <label class="switch-input">
+        <input type="checkbox" id="darkModeSwitch">
+        <span class="switch-slider"></span>
+      </label>
+    </div>
+  </header>
+  <div class="exam-content">
+    <label id="questionPos"></label>
+    <h2 id="questionText">Question</h2>
+    <div id="choices" class="choices-container"></div><br>
+    <button id="homeBtn">Home</button>
+    <button id="prevBtn">Previous</button>
+    <button id="nextBtn">Next</button>
+  </div>
+  <div class="result-container">
+    <h2>Result:</h2></br>
+    <p id="elapsedTime">Elapsed Time: 00:00:00</p>
+    <p>Correct Answers: <span id="correctAnswers">0</span></p>
+    <p>Percentage: <span id="percentage">0%</span></p>
+    <button id="newExamBtn">New Exam</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <title>Exam Prep (Quiz)</title>
+</head>
+<body>
+  <header>
+    <h1>Exam Prep (Quiz)</h1>
+    <div class="theme-switcher">
+      <label class="switch-label">Dark Mode:</label>
+      <label class="switch-input">
+        <input type="checkbox" id="darkModeSwitch">
+        <span class="switch-slider"></span>
+      </label>
+    </div>
+    <div class="font-size-buttons">
+      <button class="font-size-button" id="increaseFontSize">+</button>
+      <button class="font-size-button" id="decreaseFontSize">-</button>
+    </div>
+  </header>
+
+  <section class="start-section">
+    <p>Select an exam:</p>
+    <select id="questionsSetDropdown">
+      <!-- Options -->
+    </select>
+    <div class="spacer"></div>
+    <label for="questionsInput">Questions:</label>
+    <input type="number" id="questionsInput" value="25">
+    <button id="startBtn">Start</button>
+  </section>
+
+  <script>
+    const questionsSetDropdown = document.getElementById("questionsSetDropdown");
+    const startBtn = document.getElementById("startBtn");
+    const questionsInput = document.getElementById("questionsInput");
+
+    startBtn.addEventListener("click", () => {
+      const selectedSetFileName = questionsSetDropdown.value;
+      const numberOfQuestions = questionsInput.value;
+      if (selectedSetFileName) {
+        window.location.href = `exam.html?questionsSet=${selectedSetFileName}&questions=${numberOfQuestions}`;
+      }
+    });
+
+    // Fetch the list of question sets from the PHP script
+    async function fetchQuestionSets() {
+      try {
+        const response = await fetch("get_questions.php");
+        const data = await response.text();
+        const questionSets = data.split("</br>").filter(Boolean); // Remove empty lines
+        populateDropdown(questionSets);
+      } catch (error) {
+        console.error("Error fetching question sets:", error);
+      }
+    }
+
+    function populateDropdown(questionSets) {
+      questionSets.forEach(questionSet => {
+        const option = document.createElement("option");
+        option.value = `${questionSet}.set`;
+        option.textContent = `${questionSet}`;
+        questionsSetDropdown.appendChild(option);
+      });
+    }
+
+    // Call the fetchQuestionSets function when the page loads
+    window.addEventListener("load", fetchQuestionSets);
+
+    // Add event listeners for theme switcher and font size buttons
+    const darkModeSwitch = document.getElementById("darkModeSwitch");
+    const increaseFontSizeBtn = document.getElementById("increaseFontSize");
+    const decreaseFontSizeBtn = document.getElementById("decreaseFontSize");
+
+    darkModeSwitch.addEventListener("change", () => {
+      document.body.classList.toggle("dark-mode", darkModeSwitch.checked);
+    });
+
+    increaseFontSizeBtn.addEventListener("click", () => {
+      document.body.style.fontSize = "larger";
+    });
+
+    decreaseFontSizeBtn.addEventListener("click", () => {
+      document.body.style.fontSize = "smaller";
+    });
+  </script>
+</body>
+</html>
